@@ -77,12 +77,12 @@ I'm a **Final-year Telecommunication Engineering undergraduate** at NED Universi
 ## 📊 GitHub Stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=mohammadshayan1&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mohammadshayan1&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" height="165"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=mshayandev&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" height="165"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mshayandev&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" height="165"/>
 </div>
 
 <div align="center">
-  <img src="https://streak-stats.demolab.com/?user=mohammadshayan1&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+  <img src="https://streak-stats.demolab.com/?user=mshayandev&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 </div>
 
 ## 🎓 Education
@@ -130,25 +130,25 @@ Multiple volunteer websites for student organizations and events
 
 ## 🏆 GitHub Trophies
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=mohammadshayan1&theme=tokyonight&no-frame=true&no-bg=true&column=7" alt="GitHub Trophies"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=mshayandev&theme=tokyonight&no-frame=true&no-bg=true&column=7" alt="GitHub Trophies"/>
 </div>
 
 ## 📈 Contribution Graph
-[![Mohammad Shayan's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=mohammadshayan1&theme=tokyo-night&hide_border=true)](https://github.com/mohammadshayan1)
+[![Mohammad Shayan's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=mshayandev&theme=tokyo-night&hide_border=true)](https://github.com/mshayandev)
 
 ## 🤝 Connect With Me
 
 <div align="center">
   
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mohammad-shayan786)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohammadshayan1)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mshayandev)
 
 </div>
 
 ---
 
 <div align="center">
-  <img src="https://komarev.com/ghpvc/?username=mohammadshayan1&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=mshayandev&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
   
   <br/>
   <br/>
