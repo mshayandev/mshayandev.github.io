@@ -249,4 +249,27 @@
     new PureCounter();
   }
 
+  /**
+   * Auto-calculate age from birthday
+   */
+  const birthdayElement = select('#birthday');
+  const ageElement = select('#age');
+  if (birthdayElement && ageElement) {
+    const birthdayValue = birthdayElement.getAttribute('data-birthday');
+    const birthdayDate = birthdayValue ? new Date(birthdayValue) : null;
+
+    if (birthdayDate && !Number.isNaN(birthdayDate.getTime())) {
+      const today = new Date();
+      let age = today.getFullYear() - birthdayDate.getFullYear();
+      const monthDiff = today.getMonth() - birthdayDate.getMonth();
+      const dayDiff = today.getDate() - birthdayDate.getDate();
+
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age -= 1;
+      }
+
+      ageElement.textContent = String(age);
+    }
+  }
+
 })()
