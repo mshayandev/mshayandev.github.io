@@ -1,0 +1,6 @@
+AuthGroupFile /dev/null
+AuthType Basic
+AuthUserFile /home/mshayan/domains/mohammadshayan.com/.htpasswd/public_html/admin/.htpasswd
+AuthName "admin panel"
+require valid-user
+ErrorDocument 401 "Unauthorized Access"
