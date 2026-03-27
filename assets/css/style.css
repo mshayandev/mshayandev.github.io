@@ -5,6 +5,7 @@ body {
   color: #fff;
   position: relative;
   background: transparent;
+  line-height: 1.65;
 }
 
 body::before {
@@ -28,11 +29,20 @@ body::before {
 a {
   color: #d7a84e;
   text-decoration: none;
+  transition: color 0.25s ease;
 }
 
 a:hover {
   color: #35e888;
   text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+.contact-btn:focus-visible,
+.portfolio #portfolio-flters li:focus-visible {
+  outline: 2px solid #35e888;
+  outline-offset: 3px;
 }
 
 h1,
@@ -81,6 +91,8 @@ h6 {
   font-size: 24px;
   margin-top: 20px;
   color: rgba(255, 255, 255, 0.8);
+  max-width: 620px;
+  line-height: 1.45;
 }
 
 #header h2 span {
@@ -346,7 +358,10 @@ section.section-show {
 
 section .container {
   background: rgba(0, 0, 0, 0.9);
-  padding: 30px;
+  padding: 36px;
+  border: 1px solid rgba(215, 168, 78, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -383,7 +398,7 @@ section .container {
 .section-title p {
   margin: 0;
   margin: -15px 0 15px 0;
-  font-size: 36px;
+  font-size: clamp(30px, 3.3vw, 40px);
   font-weight: 700;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
@@ -659,6 +674,22 @@ section .container {
   padding-bottom: 10px;
 }
 
+.resume .resume-download-btn {
+  display: inline-block;
+  margin-top: 8px;
+  background: #d7a84e;
+  color: #111;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: 8px;
+  border: 1px solid #d7a84e;
+}
+
+.resume .resume-download-btn:hover {
+  background: #ebc06f;
+  color: #111;
+}
+
 .resume .resume-item:last-child {
   padding-bottom: 0;
 }
@@ -683,6 +714,8 @@ section .container {
   background: rgba(204, 204, 204, 0.1);
   padding: 80px 20px;
   transition: all ease-in-out 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
 }
 
 .services .icon-box .icon {
@@ -736,6 +769,7 @@ section .container {
 .services .icon-box:hover {
   background: #d7a84e;
   border-color: #d7a84e;
+  transform: translateY(-6px);
 }
 
 .services .icon-box:hover .icon {
@@ -784,11 +818,13 @@ section .container {
   margin: 0 3px 10px 3px;
   transition: all 0.3s ease-in-out;
   border-radius: 4px;
+  border: 1px solid transparent;
 }
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
   background: #d7a84e;
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -801,6 +837,8 @@ section .container {
   overflow: hidden;
   z-index: 1;
   background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .portfolio .portfolio-wrap::before {
@@ -993,6 +1031,8 @@ section .container {
   padding: 20px;
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
 .contact .info-box i.bx {
@@ -1034,6 +1074,61 @@ section .container {
 }
 
 .contact .info-box .social-links a:hover {
+  color: #d7a84e;
+}
+
+.contact .contact-card {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.contact .contact-card h3 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.contact .contact-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact .contact-card-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact .contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #d7a84e;
+  border: 1px solid #d7a84e;
+  color: #111;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.contact .contact-btn:hover {
+  background: #ebc06f;
+  border-color: #ebc06f;
+  color: #111;
+}
+
+.contact .contact-btn.contact-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.contact .contact-btn.contact-btn-secondary:hover {
+  border-color: #d7a84e;
   color: #d7a84e;
 }
 
@@ -1166,6 +1261,32 @@ section .container {
   font-size: 13px;
   color: #fff;
   z-index: 999999;
+}
+
+@media (max-width: 768px) {
+  section .container {
+    padding: 24px;
+    border-radius: 10px;
+  }
+
+  .contact .contact-card-actions {
+    flex-direction: column;
+  }
+
+  .contact .contact-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media (max-width: 992px) {
