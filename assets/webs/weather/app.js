@@ -1,81 +1,98 @@
+const apiKey = "7286b668e31a4aebb3a92629232009";
+const weatherForm = document.getElementById("weather-form");
+const locationInput = document.getElementById("location");
+const weatherInfo = document.getElementById("weatherInfo");
+const weatherDetails = document.getElementById("weather-details");
+const statusMessage = document.getElementById("statusMessage");
 
-      
-      const apiKey = "7286b668e31a4aebb3a92629232009";
-
-        function getWeather() {
-            const locationInput = document.getElementById("location");
-            const location = locationInput.value;
-
-            // API URL
-            const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
-
-            // Make a GET request to the API
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Display weather information
-                    const weatherInfo = document.getElementById("weatherInfo");
-                    weatherInfo.innerHTML = `
-                        <h2><i class="fas fa-cloud"></i> Weather in ${data.location.name}, ${data.location.country}</h2>
-                        <p><i class="fas fa-thermometer-half"></i> <span>Temperature: ${data.current.temp_c}°C</span></p>
-                        <p><i class="fas fa-cloud-sun"></i> <span>Condition: ${data.current.condition.text}</span></p>
-                        <p><i class="fas fa-tint"></i></i> <span>Humidity: ${data.current.humidity}%</span></p>
-                        <p><i class="fas fa-wind"></i> <span>Wind Speed: ${data.current.wind_kph} km/h</span></p>
-                    `;
-                })
-                .catch(error => {
-                    console.error("Error fetching data:", error);
-                });
-        }
-                // Initialize AOS with desired options
-                AOS.init({
-            duration: 1000, // Animation duration in milliseconds
-            easing: 'ease-in-out', // Animation easing
-        });
-
- // Function to fetch weather data using GPS coordinates
- function fetchWeatherData(latitude, longitude) {
-    // Replace 'YOUR_API_KEY' with your WeatherAPI.com API key
-    const apiKey = '7286b668e31a4aebb3a92629232009';
-
-    // Make an API request to WeatherAPI.com using GPS coordinates
-    fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`)
-        .then(response => response.json())
-        .then(weatherData => {
-            // Extract the relevant weather information
-            const location = weatherData.location.name;
-            const temperature = weatherData.current.temp_c;
-            const conditionText = weatherData.current.condition.text;
-
-            // Display the weather details
-            const weatherDetails = document.querySelector('.weather-details');
-            weatherDetails.innerHTML = `
-                <p><i class="fas fa-map-marker-alt"></i> Location: ${location}</p>
-                <p><i class="fas fa-thermometer-half"></i> Temperature: ${temperature}°C</p>
-                <p><i class="fas fa-cloud"></i> Condition: ${conditionText}</p>
-            `;
-        })
-        .catch(error => console.error('Error fetching weather data:', error));
+function setStatus(message, isError = false) {
+    statusMessage.textContent = message;
+    statusMessage.style.color = isError ? "#b02714" : "#7b4b19";
 }
 
-// Function to handle successful geolocation
-function handleGeolocationSuccess(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    // Call the fetchWeatherData function with the obtained coordinates
-    fetchWeatherData(latitude, longitude);
+function renderWeatherCard(data) {
+    return `
+        <div class="city-name">${data.location.name}, ${data.location.country}</div>
+        <img class="weather-icon" src="https:${data.current.condition.icon}" alt="${data.current.condition.text}">
+        <p class="stat"><i class="fas fa-thermometer-half"></i> Temperature: ${data.current.temp_c}°C</p>
+        <p class="stat"><i class="fas fa-cloud-sun"></i> Condition: ${data.current.condition.text}</p>
+        <p class="stat"><i class="fas fa-tint"></i> Humidity: ${data.current.humidity}%</p>
+        <p class="stat"><i class="fas fa-wind"></i> Wind Speed: ${data.current.wind_kph} km/h</p>
+        <p class="stat"><i class="fas fa-clock"></i> Last Updated: ${data.current.last_updated}</p>
+    `;
 }
 
-// Function to handle geolocation error
-function handleGeolocationError(error) {
-    console.error('Geolocation error:', error.message);
+async function fetchCurrentWeather(query) {
+    const endpoint = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(query)}&aqi=no`;
+    const response = await fetch(endpoint);
+
+    if (!response.ok) {
+        throw new Error("Unable to fetch weather data right now.");
+    }
+
+    const data = await response.json();
+
+    if (data.error) {
+        throw new Error(data.error.message || "Location not found.");
+    }
+
+    return data;
 }
 
-// Check if geolocation is available in the browser
-if ('geolocation' in navigator) {
-    // Get the user's current location
-    navigator.geolocation.getCurrentPosition(handleGeolocationSuccess, handleGeolocationError);
-} else {
-    console.error('Geolocation is not available in this browser.');
+async function handleSearchWeather(event) {
+    event.preventDefault();
+
+    const location = locationInput.value.trim();
+    if (!location) {
+        setStatus("Please enter a city name.", true);
+        return;
+    }
+
+    setStatus("Fetching weather...");
+
+    try {
+        const data = await fetchCurrentWeather(location);
+        weatherInfo.innerHTML = renderWeatherCard(data);
+        weatherInfo.classList.remove("muted-text");
+        setStatus(`Showing weather for ${data.location.name}.`);
+    } catch (error) {
+        weatherInfo.innerHTML = "Could not load weather for this location.";
+        weatherInfo.classList.add("muted-text");
+        setStatus(error.message, true);
+    }
 }
+
+async function fetchWeatherByLocation(latitude, longitude) {
+    try {
+        setStatus("Detecting your location weather...");
+        const data = await fetchCurrentWeather(`${latitude},${longitude}`);
+        weatherDetails.innerHTML = renderWeatherCard(data);
+        weatherDetails.classList.remove("muted-text");
+        setStatus("Location weather loaded.");
+    } catch (error) {
+        weatherDetails.innerHTML = "Location weather is unavailable right now.";
+        weatherDetails.classList.add("muted-text");
+        setStatus(error.message, true);
+    }
+}
+
+function initGeolocation() {
+    if (!("geolocation" in navigator)) {
+        weatherDetails.textContent = "Geolocation is not supported in this browser.";
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+            fetchWeatherByLocation(latitude, longitude);
+        },
+        () => {
+            weatherDetails.textContent = "Location permission denied. You can still search by city name.";
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+    );
+}
+
+weatherForm.addEventListener("submit", handleSearchWeather);
+initGeolocation();
