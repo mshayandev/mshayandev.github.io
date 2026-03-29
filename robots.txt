@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mshayandev.github.io/sitemap.xml

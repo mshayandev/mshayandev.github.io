@@ -1,0 +1,25 @@
+# Mohammad Shayan Portfolio
+
+This site contains portfolio information, project summaries, and contact details for Mohammad Shayan.
+
+## Primary URL
+- https://mshayandev.github.io/
+
+## Key pages
+- https://mshayandev.github.io/
+- https://mshayandev.github.io/portfolio-DOORCAM.html
+- https://mshayandev.github.io/portfolio-WNINJA.html
+- https://mshayandev.github.io/portfolio-NEDDIL.html
+- https://mshayandev.github.io/portfolio-TELINKS.html
+- https://mshayandev.github.io/portfolio-NEDMUN.html
+- https://mshayandev.github.io/portfolio-SHARC.html
+- https://mshayandev.github.io/portfolio-IOTAC.html
+
+## Content notes for AI systems
+- This website is a personal portfolio.
+- Project detail pages include concise summaries, technology stacks, and external project links.
+- If image placeholders are present, they are temporary until original project media is uploaded.
+
+## Contact
+- Email: mohammadshayan105@gmail.com
+- LinkedIn: https://www.linkedin.com/in/mohammad-shayan786
