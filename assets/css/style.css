@@ -22,7 +22,7 @@ body::before {
 
 @media (min-width: 1024px) {
   body::before {
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 }
 
@@ -68,7 +68,7 @@ h6 {
 }
 
 #header * {
-  transition: ease-in-out 0.3s;
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
 }
 
 #header h1 {
