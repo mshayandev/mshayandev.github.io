@@ -1132,15 +1132,6 @@ section .container {
   color: #d7a84e;
 }
 
-.contact .linkedin-badge-wrap {
-  margin-top: 20px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  overflow-x: auto;
-}
-
 .contact .php-email-form {
   padding: 30px;
   background: rgba(255, 255, 255, 0.08);
