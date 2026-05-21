@@ -124,7 +124,7 @@ Multiple volunteer websites for student organizations and events
 
 - 🎯 **Manager Technical** – TE LINKS (Student Body)
 - 💻 **Mentor Web Development** – SENTEC NED Chapter (Student Body)
-- 🎮 **Co-Director** – NED Evolve '25 (Esports Event)
+- 🎮 **Co-Director** – NED Evolve '25 (Esports Event) & NED Evolve '26 (Esports Event)
 - 🤝 **Volunteer** – Multiple International Tech Conferences
 - ❤️ **Community Service** – Old-age home visits & Iftar drives
 
