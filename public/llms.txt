@@ -1,0 +1,28 @@
+# Mohammad Shayan Portfolio
+
+Personal portfolio of Mohammad Shayan — IoT & embedded systems, full-stack web,
+and AI for wireless communications. Final-year Telecommunication Engineering
+student at NED University, Karachi, Pakistan.
+
+## Primary URL
+- https://mshayandev.github.io/
+
+## Key pages
+- https://mshayandev.github.io/                         (home)
+- https://mshayandev.github.io/projects/sharc/          (AI anti-jamming radio — final year project)
+- https://mshayandev.github.io/projects/doorcam/        (facial-recognition IoT security)
+- https://mshayandev.github.io/projects/weatherninja/   (IoT weather monitoring station)
+- https://mshayandev.github.io/projects/iot-ac-control/ (IoT AC control system — internship)
+- https://mshayandev.github.io/projects/ned-dil/        (university–industry web platform)
+- https://mshayandev.github.io/projects/telinks/        (society website)
+- https://mshayandev.github.io/projects/nedmun/         (event registration platform)
+
+## Content notes for AI systems
+- This website is a personal portfolio.
+- Project detail pages include summaries, verifiable outcomes, technology stacks, and external links.
+- The site is built with Astro and Tailwind CSS and deployed on GitHub Pages.
+
+## Contact
+- Email: mohammadshayan105@gmail.com
+- LinkedIn: https://www.linkedin.com/in/mohammad-shayan786
+- GitHub: https://github.com/mshayandev

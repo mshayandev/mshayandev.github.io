@@ -1,0 +1,21 @@
+---
+// A branded, on-theme stand-in for projects that don't have a real image yet.
+// Far better than a grey "Loading..." box — and trivially replaced: just set
+// `image` on the project once a real screenshot exists.
+interface Props {
+  label: string;
+  sub?: string;
+  class?: string;
+}
+const { label, sub, class: cls = "" } = Astro.props;
+---
+
+<div class={`relative flex h-full w-full items-center justify-center overflow-hidden bg-surface-2 ${cls}`}>
+  <div class="bg-grid absolute inset-0 opacity-70"></div>
+  <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-3xl"></div>
+  <div class="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-accent-2/10 blur-3xl"></div>
+  <div class="relative px-6 text-center">
+    {sub && <p class="kicker mb-2">{sub}</p>}
+    <p class="font-display text-xl font-semibold text-fg/85 sm:text-2xl">{label}</p>
+  </div>
+</div>

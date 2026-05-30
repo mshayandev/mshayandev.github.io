@@ -1,7 +1,5 @@
 # 👋 Hey there! I'm Mohammad Shayan
 
-## Portfolio Site Deployment
-
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E9EF7&center=true&vCenter=true&width=435&lines=Full+Stack+Developer;Mobile+App+Developer;UI%2FUX+Enthusiast;Problem+Solver;Tech+Explorer" alt="Typing SVG" />
 </div>
@@ -120,13 +118,22 @@ ESP32-based automated climate control system with relay modules and remote monit
 ### Web Development Portfolio
 Multiple volunteer websites for student organizations and events
 
+## 🏭 Industrial Exposure
+
+- ✈️ **Industrial Visit – RADAR ACC, Pakistan Airports Authority** – Studied real-world **communication, navigation, surveillance (CNS), radar, and air-traffic-control systems**, gaining hands-on exposure to aviation-grade wireless infrastructure.
+
 ## 💼 Leadership & Experience
 
 - 🎯 **Manager Technical** – TE LINKS (Student Body)
 - 💻 **Mentor Web Development** – SENTEC NED Chapter (Student Body)
 - 🎮 **Co-Director** – NED Evolve '25 (Esports Event) & NED Evolve '26 (Esports Event)
 - 🤝 **Volunteer** – Multiple International Tech Conferences
-- ❤️ **Community Service** – Old-age home visits & Iftar drives
+
+## ❤️ Community Services
+
+- 🌙 **Ramadan Iftar Drive** – Organized and distributed iftar meals to those in need
+- 👴 **Old Age Home Outreach Programme** – Regular visits and engagement activities with elderly residents
+- 🌳 **Plantation Drive** – Participated in tree-planting initiatives for a greener environment
 
 ## 🏆 GitHub Trophies
 <div align="center">

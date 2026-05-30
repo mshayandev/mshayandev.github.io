@@ -1,0 +1,55 @@
+---
+import { profile } from "../data/profile";
+import Socials from "./Socials.astro";
+import SectionHeading from "./SectionHeading.astro";
+---
+
+<section id="contact" class="scroll-mt-20 border-t border-border/60 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading
+      kicker="06 — Contact"
+      title="Let's build something"
+      lead="Got a project, an idea, or a role in mind? The fastest way to reach me is email or LinkedIn."
+    />
+
+    <div class="grid gap-6 md:grid-cols-[1.2fr_1fr]" data-reveal>
+      <div class="rounded-xl border border-border bg-surface p-8">
+        <p class="font-mono text-xs uppercase tracking-widest text-accent-2">Email</p>
+        <a
+          href={`mailto:${profile.email}`}
+          class="mt-2 block break-all text-xl font-semibold text-fg hover:text-accent"
+        >
+          {profile.email}
+        </a>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href={`mailto:${profile.email}`}
+            class="rounded-md bg-accent px-6 py-3 font-mono text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+          >
+            Send an email
+          </a>
+          <a
+            href={profile.socials.linkedin}
+            target="_blank"
+            rel="noopener"
+            class="rounded-md border border-border px-6 py-3 font-mono text-sm text-fg transition-colors hover:border-accent hover:text-accent"
+          >
+            Message on LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-between rounded-xl border border-border bg-surface p-8">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-accent-2">Based in</p>
+          <p class="mt-2 text-lg text-fg">{profile.location}</p>
+          <p class="mt-1 text-sm text-muted">Open to freelance & full-time opportunities.</p>
+        </div>
+        <div class="mt-6">
+          <p class="mb-3 font-mono text-xs uppercase tracking-widest text-accent-2">Elsewhere</p>
+          <Socials />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

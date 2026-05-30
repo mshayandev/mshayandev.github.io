@@ -1,0 +1,33 @@
+---
+import { skills } from "../data/profile";
+import SectionHeading from "./SectionHeading.astro";
+---
+
+<section class="border-t border-border/60 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading
+      kicker="03 — Toolkit"
+      title="What I build with"
+      lead="Grouped by where it sits in the stack — no made-up percentages."
+    />
+
+    <div class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        skills.map((s) => (
+          <div data-reveal>
+            <h3 class="mb-3 font-mono text-xs uppercase tracking-widest text-accent-2">
+              {s.group}
+            </h3>
+            <ul class="flex flex-wrap gap-2">
+              {s.items.map((i) => (
+                <li class="rounded-md border border-border bg-surface px-3 py-1.5 text-sm text-fg/90">
+                  {i}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
