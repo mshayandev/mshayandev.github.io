@@ -9,7 +9,7 @@ export const education: TimelineItem[] = [
   {
     title: "B.E. Telecommunication Engineering",
     org: "NED University of Engineering & Technology, Karachi",
-    period: "2022 — Expected 2026",
+    period: "Sep 2022 — Aug 2026",
     points: [
       "Final-year project: SHARC (Self-Healing Anti-Jamming Radio Communication) using AI cognitive defense.",
     ],
@@ -17,13 +17,13 @@ export const education: TimelineItem[] = [
   {
     title: "Advanced Diploma in Software Engineering (ACCP Prime 2.0)",
     org: "Aptech, Karachi",
-    period: "2022 — 2025",
+    period: "Sep 2022 — Sep 2025",
     points: ["Programming, AI foundations, and full-stack development."],
   },
   {
-    title: "Intermediate (Pre-Engineering)",
-    org: "Habib Public High School, Karachi",
-    period: "2020 — 2022",
+    title: "Intermediate in Computer Science",
+    org: "Habib Public School, Karachi",
+    period: "Aug 2020 — Aug 2022",
     points: [],
   },
 ];

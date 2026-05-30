@@ -63,12 +63,13 @@ export const projects: Project[] = [
       "Facial-recognition door security with multi-sensor fusion and instant SMS/push alerts.",
     description: [
       "A facial-recognition based smart security system that identifies known users at the door and raises an instant alert on anyone it doesn't recognise.",
-      "It fuses PIR, ultrasonic, and LDR sensors to cut false triggers, and wires up Twilio plus push notifications so incidents reach you within seconds.",
+      "It fuses PIR, ultrasonic, and LDR sensors to cut false triggers, adds real-time monitoring with two-way audio, and wires up Twilio plus push notifications so incidents reach you within seconds.",
     ],
     highlights: [
       "97% recognition accuracy across 50+ enrolled users",
       "Sub-2s identification time",
       "Multi-sensor fusion reduced false positives by 80%",
+      "Real-time monitoring with two-way audio",
       "Twilio SMS + push alerts delivered within 3 seconds",
     ],
     tech: ["Python", "OpenCV", "Flask", "Firebase", "Twilio", "Raspberry Pi 4B"],
@@ -186,6 +187,28 @@ export const projects: Project[] = [
     tech: ["HTML", "Bootstrap", "PHP", "MySQL"],
     image: null,
     url: { label: "nedmun.telinks.org", href: "https://nedmun.telinks.org" },
+    hasDetail: true,
+  },
+  {
+    slug: "photo-gallery",
+    title: "Photo Gallery Management System",
+    category: "web",
+    domain: "Full-Stack Web",
+    summary:
+      "A secure photo-gallery platform for managing photography events and portfolios, built on a custom PHP MVC architecture.",
+    description: [
+      "A full-featured platform for managing photography events and portfolios, built from scratch on a custom PHP MVC architecture.",
+      "It includes a secure admin dashboard with CSRF protection, an event management system, photo uploads with validation and cloud-storage integration, and XML sitemap generation for SEO.",
+    ],
+    highlights: [
+      "Custom PHP MVC architecture",
+      "Secure admin dashboard with CSRF protection",
+      "Photo upload with validation + cloud-storage integration",
+      "XML sitemap generation for SEO",
+    ],
+    tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    image: null,
+    url: { label: "nps.telinks.org", href: "https://nps.telinks.org" },
     hasDetail: true,
   },
   {
