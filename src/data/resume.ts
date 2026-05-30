@@ -17,7 +17,7 @@ export const education: TimelineItem[] = [
   {
     title: "Advanced Diploma in Software Engineering (ACCP Prime 2.0)",
     org: "Aptech, Karachi",
-    period: "Sep 2022 — Sep 2025",
+    period: "Sep 2022 — Oct 2025",
     points: ["Programming, AI foundations, and full-stack development."],
   },
   {

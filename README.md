@@ -14,7 +14,7 @@ I'm a **Final-year Telecommunication Engineering undergraduate** at NED Universi
 - 🌱 Certified in **Software Engineering (Aptech 2.0)** with expertise in embedded systems, AI, and web development
 - 💼 Leadership roles: **Manager Technical @ TE LINKS** | **Mentor Web Development @ SENTEC NED**
 - 💬 Ask me about **IoT, Embedded Systems, Wireless Communications, AI in Cybersecurity**
-- 📫 Reach me: **[LinkedIn](https://linkedin.com/in/mohammad-shayan786)**
+- 📫 Reach me: **[LinkedIn](https://linkedin.com/in/mshayandev)**
 - 🌍 Languages: **English (Fluent), Urdu (Native)**
 - ⚡ Fun fact: **I've volunteered at international tech conferences and organized Esports events!** 🎮
 
@@ -147,7 +147,7 @@ Multiple volunteer websites for student organizations and events
 
 <div align="center">
   
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mohammad-shayan786)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mshayandev)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mshayandev)
 
 </div>
