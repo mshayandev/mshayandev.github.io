@@ -4,7 +4,7 @@ export const profile = {
   role: "IoT & Full-Stack Developer",
   location: "Karachi, Pakistan",
   email: "mohammadshayan105@gmail.com",
-  resume: "/assets/MohammadShayan.pdf",
+  resume: "/assets/Mohammad%20Shayan.pdf",
   portrait: "/assets/img/cvpic.webp",
   birthday: "2004-09-30",
 
