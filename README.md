@@ -126,9 +126,7 @@ Multiple volunteer websites for student organizations and events
 
 - 🎯 **Manager Technical** – TE LINKS (Student Body)
 - 💻 **Mentor Web Development** – SENTEC NED Chapter (Student Body)
-- 🎮 **Co-Director** – NED Evolve '26 (Esports Event)
-- 🎮 **Co-Director** – NED Evolve '25 (Esports Event)
-- 🪴 **Technical Manager** – CLIMATECH- 2025 (2nd International Conference on Technology Driven Climate Action)
+- 🎮 **Co-Director** – NED Evolve '25 (Esports Event) & NED Evolve '26 (Esports Event)
 - 🤝 **Volunteer** – Multiple International Tech Conferences
 
 ## ❤️ Community Services
