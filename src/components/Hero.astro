@@ -1,0 +1,59 @@
+---
+import { profile } from "../data/profile";
+import Socials from "./Socials.astro";
+---
+
+<section class="relative mx-auto max-w-6xl px-5 pb-16 pt-16 md:pb-24 md:pt-24">
+  <div class="grid items-center gap-12 md:grid-cols-[1.3fr_1fr]">
+    <div data-reveal>
+      <p class="kicker mb-5">{profile.role} · {profile.location}</p>
+      <h1 class="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+        {profile.headline}
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-muted">{profile.intro}</p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a
+          href="/#work"
+          class="rounded-md bg-accent px-6 py-3 font-mono text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+        >
+          View my work
+        </a>
+        <a
+          href={profile.resume}
+          target="_blank"
+          rel="noopener"
+          class="rounded-md border border-border px-6 py-3 font-mono text-sm text-fg transition-colors hover:border-accent hover:text-accent"
+        >
+          Download résumé
+        </a>
+        <Socials class="ml-1" />
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-xs md:max-w-none" data-reveal>
+      <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-accent/20 to-accent-2/20 blur-xl"></div>
+      <div class="relative overflow-hidden rounded-3xl border border-border bg-surface">
+        <img
+          src={profile.portrait}
+          alt={`Portrait of ${profile.name}`}
+          width="480"
+          height="560"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Real stats, not filler counters -->
+  <dl class="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-4" data-reveal>
+    {
+      profile.stats.map((s) => (
+        <div class="bg-surface px-6 py-6">
+          <dt class="font-display text-3xl font-bold text-fg">{s.value}</dt>
+          <dd class="mt-1 text-sm text-muted">{s.label}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

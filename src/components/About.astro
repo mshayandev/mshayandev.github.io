@@ -1,0 +1,36 @@
+---
+import { profile } from "../data/profile";
+import SectionHeading from "./SectionHeading.astro";
+
+const facts = [
+  { k: "Based in", v: profile.location },
+  { k: "Degree", v: "B.E. Telecommunication Eng. (final year)" },
+  { k: "Focus", v: "IoT · Full-stack · AI for wireless" },
+  { k: "Availability", v: "Open to freelance & opportunities" },
+];
+---
+
+<section id="about" class="scroll-mt-20 border-t border-border/60 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading kicker="01 — About" title="Hardware meets software" />
+
+    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr]">
+      <div class="space-y-5 text-lg text-muted" data-reveal>
+        {profile.about.map((p) => <p>{p}</p>)}
+      </div>
+
+      <ul class="space-y-4" data-reveal>
+        {
+          facts.map((f) => (
+            <li class="rounded-lg border border-border bg-surface px-5 py-4">
+              <span class="block font-mono text-xs uppercase tracking-widest text-accent-2">
+                {f.k}
+              </span>
+              <span class="mt-1 block text-fg">{f.v}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

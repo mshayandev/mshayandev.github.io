@@ -1,0 +1,90 @@
+---
+import { education, experience, achievements, certifications } from "../data/resume";
+import { profile } from "../data/profile";
+import SectionHeading from "./SectionHeading.astro";
+
+const columns = [
+  { title: "Experience & Leadership", items: experience },
+  { title: "Education", items: education },
+];
+---
+
+<section id="resume" class="scroll-mt-20 border-t border-border/60 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <SectionHeading kicker="05 — Résumé" title="The path so far" />
+      <a
+        href={profile.resume}
+        target="_blank"
+        rel="noopener"
+        class="mb-10 rounded-md border border-accent/40 bg-accent/10 px-5 py-2.5 font-mono text-sm text-accent transition-colors hover:bg-accent hover:text-ink md:mb-14"
+      >
+        ↓ Download PDF
+      </a>
+    </div>
+
+    <div class="grid gap-12 md:grid-cols-2">
+      {
+        columns.map((col) => (
+          <div data-reveal>
+            <h3 class="mb-6 font-mono text-xs uppercase tracking-widest text-accent-2">
+              {col.title}
+            </h3>
+            <div class="space-y-7 border-l border-border pl-6">
+              {col.items.map((item) => (
+                <div class="relative">
+                  <span class="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent bg-ink" />
+                  <h4 class="font-semibold text-fg">{item.title}</h4>
+                  {item.org && <p class="text-sm text-accent/90">{item.org}</p>}
+                  {item.period && (
+                    <p class="font-mono text-xs text-muted">{item.period}</p>
+                  )}
+                  {item.points.length > 0 && (
+                    <ul class="mt-2 list-disc space-y-1 pl-4 text-sm text-muted marker:text-accent/50">
+                      {item.points.map((pt) => (
+                        <li>{pt}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 grid gap-10 md:grid-cols-2">
+      <div data-reveal>
+        <h3 class="mb-4 font-mono text-xs uppercase tracking-widest text-accent-2">
+          Achievements
+        </h3>
+        <ul class="space-y-2">
+          {
+            achievements.map((a) => (
+              <li class="flex gap-3 text-muted">
+                <span class="text-accent">▹</span>
+                <span>{a}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="mb-4 font-mono text-xs uppercase tracking-widest text-accent-2">
+          Certifications
+        </h3>
+        <ul class="space-y-2">
+          {
+            certifications.map((c) => (
+              <li class="flex gap-3 text-muted">
+                <span class="text-accent">▹</span>
+                <span>{c}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

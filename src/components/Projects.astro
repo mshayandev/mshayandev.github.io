@@ -1,0 +1,76 @@
+---
+import { projects, categoryLabels } from "../data/projects";
+import ProjectCard from "./ProjectCard.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const filters = [
+  { key: "*", label: "All" },
+  { key: "iot", label: categoryLabels.iot },
+  { key: "web", label: categoryLabels.web },
+  { key: "design", label: categoryLabels.design },
+];
+
+// Featured first, then the rest — keeps the strongest work up top.
+const ordered = [...projects].sort(
+  (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+);
+---
+
+<section id="work" class="scroll-mt-20 border-t border-border/60 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading
+      kicker="04 — Work"
+      title="Selected projects"
+      lead="Award-winning IoT builds, full-stack platforms used by hundreds of people, and a few things I made for fun."
+    />
+
+    <div class="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filter projects">
+      {
+        filters.map((f, i) => (
+          <button
+            class:list={[
+              "filter-btn rounded-md border px-4 py-2 font-mono text-sm transition-colors",
+              i === 0
+                ? "border-accent bg-accent/10 text-accent"
+                : "border-border text-muted hover:text-fg",
+            ]}
+            data-filter={f.key}
+            aria-pressed={i === 0 ? "true" : "false"}
+          >
+            {f.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div id="project-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {ordered.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll("#project-grid [data-category]");
+    const active = {
+      on: "border-accent bg-accent/10 text-accent",
+      off: "border-border text-muted hover:text-fg",
+    };
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = btn.getAttribute("data-filter");
+        buttons.forEach((b) => {
+          const isThis = b === btn;
+          b.setAttribute("aria-pressed", String(isThis));
+          b.classList.remove(...active.on.split(" "), ...active.off.split(" "));
+          b.classList.add(...(isThis ? active.on : active.off).split(" "));
+        });
+        cards.forEach((c) => {
+          const show = f === "*" || c.getAttribute("data-category") === f;
+          c.classList.toggle("hidden", !show);
+        });
+      });
+    });
+  })();
+</script>
