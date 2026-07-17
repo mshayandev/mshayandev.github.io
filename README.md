@@ -1,166 +1,232 @@
-# 👋 Hey there! I'm Mohammad Shayan
-
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E9EF7&center=true&vCenter=true&width=435&lines=Full+Stack+Developer;Mobile+App+Developer;UI%2FUX+Enthusiast;Problem+Solver;Tech+Explorer" alt="Typing SVG" />
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=190&section=header&text=Mohammad%20Shayan&fontSize=48&fontColor=ffffff&fontAlignY=34&desc=Telecommunications%20Engineer%20in%20the%20making%20%C2%B7%20IoT%20%26%20Full-Stack%20Developer&descAlignY=54&descSize=16&animation=fadeIn" alt="header" />
+
+<a href="https://mshayandev.github.io">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=900&color=38BDF8&center=true&vCenter=true&width=620&lines=I+make+radios+think+and+dashboards+listen.;ESP32+%2B+LoRa+%2B+Edge+ML+%E2%86%92+self-healing+links.;Firebase+%2B+PHP+%2B+MySQL+%E2%86%92+platforms+people+actually+use.;Hardware+is+only+half+the+story." alt="typing" />
+</a>
+
+<br/>
+
+<a href="https://mshayandev.github.io"><img src="https://img.shields.io/badge/Portfolio-mshayandev.github.io-38BDF8?style=for-the-badge&logo=astro&logoColor=white" alt="Portfolio" /></a>
+<a href="https://linkedin.com/in/mshayandev"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="mailto:officialm.shayan@gmail.com"><img src="https://img.shields.io/badge/Email-Say%20hello-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+<img src="https://komarev.com/ghpvc/?username=mshayandev&label=Visitors&color=38BDF8&style=for-the-badge" alt="views" />
+
 </div>
 
-## 🚀 About Me
+---
 
-I'm a **Final-year Telecommunication Engineering undergraduate** at NED University, Pakistan 🇵🇰, specializing in **IoT, Embedded Systems, and AI for Wireless Communications**. With a unique blend of hardware expertise and software development skills, I'm passionate about creating innovative solutions that bridge the digital and physical worlds.
+## `whoami`
 
-- 🎓 Pursuing B.E. in **Telecommunication Engineering** (Expected Graduation: Aug-Sep 2026)
-- 🏆 **TechWiz 5 IoT Competition Winner (2024)** & **TechWiz 6 2nd Runner-Up (2025)**
-- 🔬 Final Year Project: **SHARC** - Self-Healing Anti-Jamming Radio Communication using AI Cognitive Defense
-- 🌱 Certified in **Software Engineering (Aptech 2.0)** with expertise in embedded systems, AI, and web development
-- 💼 Leadership roles: **Manager Technical @ TE LINKS** | **Mentor Web Development @ SENTEC NED**
-- 💬 Ask me about **IoT, Embedded Systems, Wireless Communications, AI in Cybersecurity**
-- 📫 Reach me: **[LinkedIn](https://linkedin.com/in/mohammad-shayan786)**
-- 🌍 Languages: **English (Fluent), Urdu (Native)**
-- ⚡ Fun fact: **I've volunteered at international tech conferences and organized Esports events!** 🎮
+```yaml
+name:      Mohammad Shayan
+location:  Karachi, Pakistan 🇵🇰
+studying:  B.E. Telecommunications Engineering @ NED University   # Sep 2022 – Aug 2026
+also:      Advanced Diploma in Software Engineering @ Aptech      # Sep 2022 – Oct 2025
+currently: Final Year Project — SHARC, an AI cognitive radio that heals its own link
+worked_at: Azfam Technologies — IoT Web Development Intern        # Dec 2025 – Jan 2026
+niche:     the seam between RF hardware and the web dashboard watching it
+ask_me_about: [ IoT, Embedded Systems, LoRa, Wireless Comms, Edge ML, Full-Stack Web ]
+languages: { English: fluent, Urdu: native }
+```
 
-## 🛠️ Tech Stack
+I build the whole vertical slice: sensors and radios at the bottom, a browser at the top, and every wire in between. Two national IoT competitions later — one win, one podium — I'm still convinced the interesting problems live where firmware meets HTTP.
 
-### 💻 Programming Languages
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![Embedded C](https://img.shields.io/badge/Embedded_C-03599C?style=for-the-badge&logo=c&logoColor=white)
-![Verilog](https://img.shields.io/badge/Verilog-2C2D72?style=for-the-badge&logo=v&logoColor=white)
+---
 
-### 🌐 Frontend Development
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+## What I actually build
 
-### 📱 Mobile Development
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+```mermaid
+flowchart LR
+    A["🌡️ Sensors<br/>DHT11 · BMP280 · PIR · LDR"] --> B["🧠 Edge Node<br/>ESP32-S3 · Raspberry Pi 4B"]
+    B -->|"LoRa SX1276/78"| C["📡 RF Link<br/>jam-aware · self-healing"]
+    B -->|"Wi-Fi"| D["☁️ Firebase RTDB"]
+    C --> D
+    D --> E["📊 Web Dashboard<br/>PHP · JS · Bootstrap"]
+    D --> F["📱 Mobile App"]
+    D --> G["🚨 Alerts<br/>Twilio SMS · Push"]
 
-### ⚙️ Backend Development
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+    style A fill:#0f2027,stroke:#38BDF8,color:#fff
+    style B fill:#203a43,stroke:#38BDF8,color:#fff
+    style C fill:#2c5364,stroke:#F59E0B,color:#fff
+    style D fill:#203a43,stroke:#38BDF8,color:#fff
+    style E fill:#0f2027,stroke:#34D399,color:#fff
+    style F fill:#0f2027,stroke:#34D399,color:#fff
+    style G fill:#0f2027,stroke:#EF4444,color:#fff
+```
 
-### 🗄️ Databases
-![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-![Microsoft SQL Server](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
+---
 
-### ☁️ Cloud & Tools
-![Azure](https://img.shields.io/badge/Microsoft_Azure-0089D0?style=for-the-badge&logo=microsoft-azure&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-
-### 🎨 Design Tools
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![Adobe Photoshop](https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=black)
-![Adobe Illustrator](https://img.shields.io/badge/Adobe%20Illustrator-FF9A00?style=for-the-badge&logo=adobe%20illustrator&logoColor=white)
-![Adobe XD](https://img.shields.io/badge/Adobe%20XD-470137?style=for-the-badge&logo=Adobe%20XD&logoColor=#FF61F6)
-
-### 🔧 Other Tools
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
-![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
-![Chart.js](https://img.shields.io/badge/Chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
-
-### ⚡ Hardware & IoT
-![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=white)
-![STM32](https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white)
-![FPGA](https://img.shields.io/badge/FPGA-2C2D72?style=for-the-badge&logo=xilinx&logoColor=white)
-![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)
-![Quartus](https://img.shields.io/badge/Quartus-0071C5?style=for-the-badge&logo=intel&logoColor=white)
-
-## 📊 GitHub Stats
+## Toolbox
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=mshayandev&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mshayandev&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" height="165"/>
+
+<img src="https://skillicons.dev/icons?i=python,c,cpp,js,php,html,css,flask,django,bootstrap&theme=dark" alt="languages and frameworks" />
+<br/>
+<img src="https://skillicons.dev/icons?i=firebase,mysql,mongodb,opencv,arduino,raspberrypi,linux,git,matlab,figma&theme=dark" alt="platforms and tools" />
+
 </div>
 
+<details>
+<summary><b>The honest breakdown</b> — what I reach for daily vs. what I've shipped once</summary>
+
+<br/>
+
+| Layer | Fluent | Working knowledge |
+| :--- | :--- | :--- |
+| **Languages** | Python, JavaScript, PHP, C/C++ | Embedded C, Dart, Verilog |
+| **Frontend** | HTML, CSS, Bootstrap, responsive & cross-browser | React, Astro, Figma |
+| **Backend** | PHP, Flask, MySQL, Firebase, auth & CRUD flows | Django, MongoDB, MSSQL |
+| **Hardware / IoT** | ESP32 · ESP32-S3, Raspberry Pi 4B, Arduino, sensors & actuators | STM32, FPGA / Quartus, RTOS |
+| **Wireless** | LoRa SX1276/SX1278, SIP/RTP, Wireshark, SIPp | Radar & CNS fundamentals |
+| **ML / Vision** | OpenCV, face recognition pipelines | Edge ML, imitation learning, signal classification |
+| **Ops** | Git, Linux, FreePBX/Asterisk, Fail2Ban, IPTables | Azure, SEO fundamentals |
+
+</details>
+
+---
+
+## Featured work
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🛰️ SHARC — Self-Healing Anti-Jamming Radio
+**`Final Year Project · in progress`**
+`ESP32-S3` `LoRa SX1276/78` `Edge ML` `Imitation Learning`
+
+An AI-driven cognitive radio that detects RF jamming in real time and reroutes itself to a clean channel — long-range links that survive a hostile spectrum instead of dying in it.
+
+<a href="https://nexsys.live"><img src="https://img.shields.io/badge/Live-nexsys.live-F59E0B?style=flat-square&logo=icloud&logoColor=white" /></a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🚪 DoorCam — Smart IoT Security System
+**`🥉 2nd Runner-Up · International IoT Ignite 2025`**
+`Python` `OpenCV` `Flask` `Firebase` `Twilio` `Pi 4B`
+
+Facial-recognition door access with PIR + ultrasonic + LDR sensing, live video, two-way audio, automated lighting, and SMS/push alerts the moment someone unknown shows up.
+
+<a href="https://github.com/TechWizardsTechwiz6/Wavebell"><img src="https://img.shields.io/badge/Code-Wavebell-181717?style=flat-square&logo=github&logoColor=white" /></a>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🌦️ WeatherNinja — Weather Monitoring Station
+**`🥇 Winner · Global IoT Solution Development 2024`**
+`Python` `Firebase` `Pi 4B` `DHT11` `BMP280` `YL-83`
+
+End-to-end station: live sensor data into Firebase, out to a web dashboard, an LCD, and a mobile app with admin login, history, and automated extreme-weather SMS alerts.
+
+<a href="https://github.com/mshayandev/techwiz"><img src="https://img.shields.io/badge/Code-techwiz-181717?style=flat-square&logo=github&logoColor=white" /></a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🏭 NED Directorate of Industrial Liaison
+**`Full-stack platform · production`**
+`HTML` `CSS` `JavaScript` `PHP` `MySQL`
+
+Connects NED students to industry. Admin dashboard handling **500+ internship applications** and **200+ FYDP submissions**, cutting admin workload by ~70%.
+
+<a href="https://github.com/mshayandev/NEDDIL-main"><img src="https://img.shields.io/badge/Code-NEDDIL-181717?style=flat-square&logo=github&logoColor=white" /></a>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🔗 TE Links — Society Website
+**`Built as Manager Technical`**
+`HTML` `Bootstrap` `JavaScript` `PHP` `MySQL` `AOS`
+
+A 7-page responsive site — Home, About, Team, Gallery, Alumni, Academics, Contact — serving 100+ active members with ~3x engagement.
+
+<a href="https://telinks.org"><img src="https://img.shields.io/badge/Live-telinks.org-38BDF8?style=flat-square&logo=googlechrome&logoColor=white" /></a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🌍 NEDMUN-VI — Registration System
+**`300+ registrations · zero data loss`**
+`HTML` `Bootstrap` `PHP` `MySQL`
+
+Dual delegate flows, brand-ambassador applications, secure admin dashboard with real-time stats, automated email confirmations, and CSV export.
+
+<a href="https://nedmun.telinks.org"><img src="https://img.shields.io/badge/Live-nedmun.telinks.org-38BDF8?style=flat-square&logo=googlechrome&logoColor=white" /></a>
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><b>Also worth a look</b> — SoftSwitch VoIP · Office AC Automation</summary>
+
+<br/>
+
+- **SoftSwitch VoIP System — Enterprise PBX** · `Ubuntu` `FreePBX` `Asterisk` `SIP` `Zoiper`
+  IVR routing, call queues, voicemail-to-email, and H.264/VP8 codec negotiation, hardened with Fail2Ban + IPTables. SIP/RTP signaling and call quality validated with Wireshark and SIPp.
+- **IoT Office AC Automation** · `ESP32` `Firebase` `Web Dashboard` — *Azfam Technologies internship*
+  Remote climate control across 10+ devices. Operator response dropped from ~15 minutes to under 2, with ~60% fewer manual interventions.
+
+</details>
+
+---
+
+## Receipts
+
 <div align="center">
-  <img src="https://streak-stats.demolab.com/?user=mshayandev&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+
+| 🏆 | Award | Body | When |
+| :---: | :--- | :--- | :--- |
+| 🥇 | **Winner — Global IoT Solution Development** *(WeatherNinja)* | APTECH | Nov 2024 |
+| 🥉 | **2nd Runner-Up — International IoT Ignite** *(DoorCam)* | APTECH | Nov 2025 |
+| 🏅 | **Top 6 Team — TechWiz 4 Data Science Competition** | APTECH | 2023 |
+
 </div>
 
-## 🎓 Education
+**Certified:** Innovating with Google Cloud AI *(Google Cloud)* · Introduction to Front-End Development *(Meta)* · AI & Deep Learning Concepts and Applications *(SimpliLearn)*
 
-**B.E. Telecommunication Engineering** | NED University of Engineering & Technology  
-📅 2022 – 2026 (Expected Graduation: Aug-Sep 2026)
+**Off the keyboard:** Manager Technical @ **TE LINKS** · Web Dev Mentor @ **SENTEC NED** · Co-Director @ **NED Evolve '25 & '26** (Esports) · volunteer at international tech conferences · Iftar drives, old-age home outreach, and plantation drives · studied live radar/CNS and air-traffic-control systems on an industrial visit to **RADAR ACC, Pakistan Airports Authority**.
 
-**Aptech Advanced Diploma in Software Engineering (Certified 2.0)**  
-📅 Sep 2022 – Sep 2025  
-*Specialized in Programming, AI, and Web Development*
+---
 
-## 🏆 Achievements & Competitions
-
-- 🥇 **TechWiz 5 IoT Competition Winner** (2024)
-- 🥉 **TechWiz 6 IoT Competition 2nd Runner-Up** (2025)
-- 🏅 **TechWiz 4 Data Science Competition** – Top 6 Team (2023)
-- 🎖️ Multiple **Hackathons & Coding Competitions** – Certificates of Participation
-
-## 📜 Certifications
-
-- **Innovating with Google Cloud Artificial Intelligence** (Google Cloud Training)
-- **Introduction to Front-End Development** (Meta)
-- **AI & Deep Learning Concepts and Applications** (SimpliLearn)
-
-## 🚀 Featured Projects
-
-### SHARC – Self-Healing Anti-Jamming Radio Communication
-*Final Year Project (Ongoing)*  
-AI-powered cognitive defense system for wireless communications with anti-jamming capabilities
-
-### IoT-Based Office AC Control System
-*Internship Project*  
-ESP32-based automated climate control system with relay modules and remote monitoring
-
-### Web Development Portfolio
-Multiple volunteer websites for student organizations and events
-
-## 🏭 Industrial Exposure
-
-- ✈️ **Industrial Visit – RADAR ACC, Pakistan Airports Authority** – Studied real-world **communication, navigation, surveillance (CNS), radar, and air-traffic-control systems**, gaining hands-on exposure to aviation-grade wireless infrastructure.
-
-## 💼 Leadership & Experience
-
-- 🎯 **Manager Technical** – TE LINKS (Student Body)
-- 💻 **Mentor Web Development** – SENTEC NED Chapter (Student Body)
-- 🎮 **Co-Director** – NED Evolve '25 (Esports Event) & NED Evolve '26 (Esports Event)
-- 🤝 **Volunteer** – Multiple International Tech Conferences
-
-## ❤️ Community Services
-
-- 🌙 **Ramadan Iftar Drive** – Organized and distributed iftar meals to those in need
-- 👴 **Old Age Home Outreach Programme** – Regular visits and engagement activities with elderly residents
-- 🌳 **Plantation Drive** – Participated in tree-planting initiatives for a greener environment
-
-## 🏆 GitHub Trophies
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=mshayandev&theme=tokyonight&no-frame=true&no-bg=true&column=7" alt="GitHub Trophies"/>
-</div>
-
-## 📈 Contribution Graph
-[![Mohammad Shayan's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=mshayandev&theme=tokyo-night&hide_border=true)](https://github.com/mshayandev)
-
-## 🤝 Connect With Me
+## By the numbers
 
 <div align="center">
-  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mohammad-shayan786)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mshayandev)
+
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=mshayandev&show_icons=true&count_private=true&hide_border=true&theme=tokyonight&bg_color=0D1117&title_color=38BDF8&icon_color=38BDF8&text_color=c9d1d9" alt="stats" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mshayandev&layout=compact&langs_count=8&hide_border=true&theme=tokyonight&bg_color=0D1117&title_color=38BDF8&text_color=c9d1d9" alt="top languages" />
+
+<img height="165" src="https://streak-stats.demolab.com?user=mshayandev&hide_border=true&theme=tokyonight&background=0D1117&ring=38BDF8&fire=F59E0B&currStreakLabel=38BDF8" alt="streak" />
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=mshayandev&theme=tokyo-night&bg_color=0D1117&color=38BDF8&line=38BDF8&point=F59E0B&hide_border=true&area=true" alt="activity graph" />
+
+<img src="https://github-profile-trophy.vercel.app/?username=mshayandev&theme=tokyonight&no-frame=true&no-bg=true&column=7&margin-w=6" alt="trophies" />
 
 </div>
 
 ---
 
 <div align="center">
-  <img src="https://komarev.com/ghpvc/?username=mshayandev&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
-  
-  <br/>
-  <br/>
-  
-  **"Bridging Hardware and Software to Build the Future of Connected Systems."** ✨
-  
-  *Thanks for visiting! Let's collaborate on IoT, AI, or anything tech – always open to innovative ideas!* 🚀
+
+### Let's build something that talks to the physical world.
+
+Open to **IoT, embedded, and full-stack** roles and collaborations — and to anyone who wants to argue about spectrum, sensors, or clean dashboards.
+
+<a href="mailto:officialm.shayan@gmail.com"><img src="https://img.shields.io/badge/officialm.shayan@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+<a href="https://linkedin.com/in/mshayandev"><img src="https://img.shields.io/badge/linkedin.com/in/mshayandev-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="https://github.com/mshayandev"><img src="https://img.shields.io/badge/github.com/mshayandev-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+
+<br/><br/>
+
+***"Bridging hardware and software to build the future of connected systems."***
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=110&section=footer" alt="footer" />
+
 </div>

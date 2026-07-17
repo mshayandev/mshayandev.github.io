@@ -29,7 +29,7 @@ export const profile = {
 
   socials: {
     github: "https://github.com/mshayandev",
-    linkedin: "https://www.linkedin.com/in/mohammad-shayan786",
+    linkedin: "https://www.linkedin.com/in/mshayandev",
     instagram: "https://www.instagram.com/mohd_shayan_official",
   },
 };
@@ -67,7 +67,7 @@ export const skills: SkillGroup[] = [
   { group: "Languages", items: ["C", "C++", "Python", "JavaScript", "PHP", "Dart", "Embedded C", "Verilog"] },
   { group: "Frontend", items: ["HTML5", "CSS3", "React", "Bootstrap"] },
   { group: "Backend & Data", items: ["PHP", "Django", "MySQL", "MongoDB", "SQL Server", "Firebase"] },
-  { group: "IoT & Hardware", items: ["ESP32", "STM32", "FPGA", "Raspberry Pi", "Arduino", "Quartus"] },
+  { group: "IoT & Hardware", items: ["ESP32", "STM32", "Raspberry Pi", "Arduino", "LoRa", "RTOS", "FPGA", "Quartus"] },
   { group: "Tools & Cloud", items: ["Git", "Linux", "Azure", "MATLAB", "Chart.js"] },
   { group: "Design", items: ["Figma", "Photoshop", "Illustrator", "Adobe XD"] },
 ];
