@@ -32,30 +32,6 @@ languages: { English: fluent, Urdu: native }
 ```
 
 I build the whole vertical slice: sensors and radios at the bottom, a browser at the top, and every wire in between. Two national IoT competitions later — one win, one podium — I'm still convinced the interesting problems live where firmware meets HTTP.
-
----
-
-## What I actually build
-
-```mermaid
-flowchart LR
-    A["🌡️ Sensors<br/>DHT11 · BMP280 · PIR · LDR"] --> B["🧠 Edge Node<br/>ESP32-S3 · Raspberry Pi 4B"]
-    B -->|"LoRa SX1276/78"| C["📡 RF Link<br/>jam-aware · self-healing"]
-    B -->|"Wi-Fi"| D["☁️ Firebase RTDB"]
-    C --> D
-    D --> E["📊 Web Dashboard<br/>PHP · JS · Bootstrap"]
-    D --> F["📱 Mobile App"]
-    D --> G["🚨 Alerts<br/>Twilio SMS · Push"]
-
-    style A fill:#0f2027,stroke:#38BDF8,color:#fff
-    style B fill:#203a43,stroke:#38BDF8,color:#fff
-    style C fill:#2c5364,stroke:#F59E0B,color:#fff
-    style D fill:#203a43,stroke:#38BDF8,color:#fff
-    style E fill:#0f2027,stroke:#34D399,color:#fff
-    style F fill:#0f2027,stroke:#34D399,color:#fff
-    style G fill:#0f2027,stroke:#EF4444,color:#fff
-```
-
 ---
 
 ## Toolbox
@@ -80,7 +56,7 @@ flowchart LR
 | **Backend** | PHP, Flask, MySQL, Firebase, auth & CRUD flows | Django, MongoDB, MSSQL |
 | **Hardware / IoT** | ESP32 · ESP32-S3, Raspberry Pi 4B, Arduino, sensors & actuators | STM32, FPGA / Quartus, RTOS |
 | **Wireless** | LoRa SX1276/SX1278, SIP/RTP, Wireshark, SIPp | Radar & CNS fundamentals |
-| **ML / Vision** | OpenCV, face recognition pipelines | Edge ML, imitation learning, signal classification |
+| **ML / Vision** | face recognition pipelines | Edge ML, imitation learning, signal classification |
 | **Ops** | Git, Linux, FreePBX/Asterisk, Fail2Ban, IPTables | Azure, SEO fundamentals |
 
 </details>
