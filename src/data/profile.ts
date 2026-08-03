@@ -11,7 +11,7 @@ export const profile = {
   /** Hero headline + supporting line — written in a plain, first-person voice */
   headline: "I build things that connect the physical and digital worlds.",
   intro:
-    "Final-year Telecommunication Engineering student at NED University. I work across IoT and embedded systems, full-stack web, and the AI side of wireless communications — turning sensors, boards, and back-ends into systems people actually use.",
+    "IoT and embedded systems, and the full-stack web apps that drive them — sensors and boards on one end, dashboards and back-ends on the other. Final-year Telecommunication Engineering at NED University, with a research year on AI for wireless.",
 
   /** About-section body */
   about: [
@@ -37,24 +37,25 @@ export const profile = {
 export interface FocusArea {
   title: string;
   body: string;
-  icon: string; // emoji or short glyph; swap for SVG later if desired
+  /** Key into the Icon component's sprite. */
+  icon: "chip" | "code" | "signal";
 }
 
 export const focusAreas: FocusArea[] = [
   {
     title: "IoT & Embedded Systems",
-    icon: "⚡",
-    body: "ESP32, Raspberry Pi, and STM32 builds — multi-sensor fusion, real-time dashboards, and devices that do something useful in the physical world.",
+    icon: "chip",
+    body: "ESP32, STM32 and Raspberry Pi builds — multi-sensor fusion, firmware, and devices that hold up outside the lab. Three of these placed at national and international IoT competitions.",
   },
   {
     title: "Full-Stack Web",
-    icon: "</>",
-    body: "Responsive front-ends with PHP/MySQL or Firebase back-ends — from society sites to registration systems that handle hundreds of real users.",
+    icon: "code",
+    body: "The software layer around the hardware, and platforms in their own right — PHP/MySQL and Firebase back-ends, responsive front-ends, and systems that have processed 500+ real applications.",
   },
   {
-    title: "AI for Wireless",
-    icon: "📡",
-    body: "Applying machine learning to wireless communications: interference detection, adaptive radio, and the signal-processing side of my final-year work.",
+    title: "Research — AI for Wireless",
+    icon: "signal",
+    body: "My final year: machine learning applied to interference detection and adaptive radio, running on-device as part of SHARC.",
   },
 ];
 
@@ -64,10 +65,10 @@ export interface SkillGroup {
 }
 
 export const skills: SkillGroup[] = [
-  { group: "Languages", items: ["C", "C++", "Python", "JavaScript", "PHP", "Dart", "Embedded C", "Verilog"] },
+  { group: "IoT & Hardware", items: ["ESP32", "STM32", "Raspberry Pi", "Arduino", "LoRa", "RTOS"] },
+  { group: "Languages", items: ["C", "C++", "Embedded C", "Python", "JavaScript", "PHP", "Dart"] },
   { group: "Frontend", items: ["HTML5", "CSS3", "React", "Bootstrap"] },
   { group: "Backend & Data", items: ["PHP", "Django", "MySQL", "MongoDB", "SQL Server", "Firebase"] },
-  { group: "IoT & Hardware", items: ["ESP32", "STM32", "Raspberry Pi", "Arduino", "LoRa", "RTOS", "FPGA", "Quartus"] },
   { group: "Tools & Cloud", items: ["Git", "Linux", "Azure", "MATLAB", "Chart.js"] },
   { group: "Design", items: ["Figma", "Photoshop", "Illustrator", "Adobe XD"] },
 ];

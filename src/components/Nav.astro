@@ -1,5 +1,6 @@
 ---
 import { profile } from "../data/profile";
+import Icon from "./Icon.astro";
 
 const links = [
   { label: "About", href: "/#about" },
@@ -51,11 +52,8 @@ const links = [
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
+      <Icon name="menu" size={26} strokeWidth={1.9} class="nav-icon-menu" />
+      <Icon name="close" size={26} strokeWidth={1.9} class="nav-icon-close hidden" />
     </button>
   </nav>
 
@@ -83,13 +81,19 @@ const links = [
     const btn = document.getElementById("nav-toggle");
     const menu = document.getElementById("nav-menu");
     if (!btn || !menu) return;
+    const iconMenu = btn.querySelector(".nav-icon-menu");
+    const iconClose = btn.querySelector(".nav-icon-close");
+    const sync = (open) => {
+      btn.setAttribute("aria-expanded", String(open));
+      iconMenu?.classList.toggle("hidden", open);
+      iconClose?.classList.toggle("hidden", !open);
+    };
     const close = () => {
       menu.classList.add("hidden");
-      btn.setAttribute("aria-expanded", "false");
+      sync(false);
     };
     btn.addEventListener("click", () => {
-      const open = menu.classList.toggle("hidden");
-      btn.setAttribute("aria-expanded", String(!open));
+      sync(!menu.classList.toggle("hidden"));
     });
     menu.querySelectorAll("[data-nav-link]").forEach((a) => a.addEventListener("click", close));
   })();
