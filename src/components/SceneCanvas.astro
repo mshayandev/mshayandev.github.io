@@ -1,0 +1,76 @@
+---
+/**
+ * Scroll-linked WebGL backdrop: PCB → wireless mesh → dashboard.
+ * Loads lazily after first paint and never runs on reduced-motion or
+ * WebGL-less devices, where the CSS grid backdrop stays as-is.
+ */
+---
+
+<div id="scene-root" class="pointer-events-none fixed inset-0" aria-hidden="true">
+  <canvas id="scene-canvas" class="h-full w-full opacity-0"></canvas>
+</div>
+
+<script>
+  import { detectTier } from "../lib/webgl/tier";
+
+  const canvas = document.getElementById("scene-canvas") as HTMLCanvasElement | null;
+  const tier = detectTier();
+
+  if (canvas && tier !== "off") {
+    const boot = async () => {
+      const [{ createHeroScene }, { initMotion }] = await Promise.all([
+        import("../lib/webgl/heroScene"),
+        import("../lib/motion"),
+      ]);
+      const { ScrollTrigger } = initMotion();
+
+      const scene = createHeroScene(canvas, tier);
+      canvas.style.opacity = "1";
+      scene.setOpacity(1);
+
+      const workTop = () => {
+        const work = document.getElementById("work");
+        if (!work) return window.innerHeight * 2;
+        return work.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.6;
+      };
+
+      // Board → mesh → dashboard, driven by scroll position.
+      ScrollTrigger.create({
+        start: 0,
+        end: () => Math.max(1, workTop()),
+        invalidateOnRefresh: true,
+        onUpdate: (self) => scene.setStage(self.progress * 2),
+      });
+
+      // Hand the background back to the CSS grid once the work starts.
+      ScrollTrigger.create({
+        trigger: "#work",
+        start: "top 85%",
+        end: "top 25%",
+        invalidateOnRefresh: true,
+        onUpdate: (self) => scene.setOpacity(1 - self.progress),
+      });
+
+      ScrollTrigger.refresh();
+    };
+
+    if ("requestIdleCallback" in window) {
+      (window as Window & typeof globalThis).requestIdleCallback(boot, { timeout: 1500 });
+    } else {
+      setTimeout(boot, 500);
+    }
+  }
+</script>
+
+<style>
+  #scene-root {
+    z-index: -9;
+    /* Fades the scene into the page edges so it never fights the content. */
+    mask-image: radial-gradient(120% 100% at 50% 35%, #000 45%, transparent 100%);
+  }
+
+  #scene-canvas {
+    display: block;
+    transition: opacity 1.2s ease;
+  }
+</style>

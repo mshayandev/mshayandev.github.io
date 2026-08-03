@@ -1,78 +1,130 @@
 ---
 import type { Project } from "../data/projects";
 import ProjectPlaceholder from "./ProjectPlaceholder.astro";
+import Icon from "./Icon.astro";
 
 interface Props { project: Project }
 const { project } = Astro.props;
 const detailHref = project.hasDetail ? `/projects/${project.slug}/` : null;
 ---
 
-<article
-  class="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-accent/60"
-  data-category={project.category}
-  data-reveal
->
-  <div class="relative aspect-[16/10] overflow-hidden">
-    {
-      project.image ? (
-        <img
-          src={project.image}
-          alt={project.title}
-          loading="lazy"
-          width="640"
-          height="400"
-          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-        />
-      ) : (
-        <ProjectPlaceholder label={project.title} sub={project.domain} />
-      )
-    }
-    {
-      project.award && (
-        <span class="absolute left-3 top-3 rounded-md bg-ink/80 px-2.5 py-1 font-mono text-[11px] text-accent-2 backdrop-blur">
-          ★ Award
-        </span>
-      )
-    }
-  </div>
-
-  <div class="flex flex-1 flex-col p-6">
-    <p class="kicker mb-2">{project.domain}</p>
-    <h3 class="text-lg font-semibold leading-snug">{project.title}</h3>
-    <p class="mt-2 flex-1 text-sm text-muted">{project.summary}</p>
-
-    <div class="mt-4 flex flex-wrap gap-1.5">
+<!-- article = layout box (Flip animates this); .card-tilt = visual box (tilt lives here) -->
+<article class="card group relative h-full" data-category={project.category} data-card>
+  <div
+    class="card-tilt flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors duration-300 group-hover:border-accent/60"
+  >
+    <div class="relative aspect-[16/10] overflow-hidden">
+      <div class="h-full w-full transition-transform duration-700 group-hover:scale-[1.05]">
+        {
+          project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              width="640"
+              height="400"
+              class="h-full w-full object-cover"
+            />
+          ) : (
+            <ProjectPlaceholder seed={project.slug} category={project.category} />
+          )
+        }
+      </div>
       {
-        project.tech.slice(0, 4).map((t) => (
-          <span class="rounded border border-border bg-surface-2 px-2 py-0.5 font-mono text-[11px] text-muted">
-            {t}
+        project.award && (
+          <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-md bg-ink/80 px-2.5 py-1 font-mono text-[11px] text-accent-2 backdrop-blur">
+            <Icon name="award" size={13} strokeWidth={1.9} />
+            Award
           </span>
-        ))
+        )
       }
     </div>
 
-    <div class="mt-5 flex items-center gap-4 border-t border-border/60 pt-4 font-mono text-sm">
-      {
-        detailHref && (
-          <a href={detailHref} class="text-accent hover:underline">
-            Details →
-          </a>
-        )
-      }
-      {
-        project.url && (
-          <a href={project.url.href} target="_blank" rel="noopener" class="text-muted hover:text-fg">
-            Live
-          </a>
-        )
-      }
-      {
-        project.repo && (
-          <a href={project.repo} target="_blank" rel="noopener" class="text-muted hover:text-fg">
-            Code
-          </a>
-        )
-      }
+    <div class="relative flex flex-1 flex-col p-6">
+      <p class="kicker mb-2">{project.domain}</p>
+      <h3 class="text-lg font-semibold leading-snug">{project.title}</h3>
+      <p class="mt-2 flex-1 text-sm text-muted">{project.summary}</p>
+
+      <div class="mt-4 flex flex-wrap gap-1.5">
+        {
+          project.tech.slice(0, 4).map((t) => (
+            <span class="rounded border border-border bg-surface-2 px-2 py-0.5 font-mono text-[11px] text-muted">
+              {t}
+            </span>
+          ))
+        }
+      </div>
+
+      <div class="mt-5 flex items-center gap-4 border-t border-border/60 pt-4 font-mono text-sm">
+        {
+          detailHref && (
+            <a href={detailHref} class="link-arrow inline-flex items-center gap-1.5 text-accent">
+              Details
+              <Icon name="arrow-right" size={15} class="arrow" />
+            </a>
+          )
+        }
+        {
+          project.url && (
+            <a
+              href={project.url.href}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-fg"
+            >
+              Live
+              <Icon name="arrow-up-right" size={14} />
+            </a>
+          )
+        }
+        {
+          project.repo && (
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-fg"
+            >
+              <Icon name="github" size={14} />
+              Code
+            </a>
+          )
+        }
+      </div>
     </div>
+
+    <div class="card-glow pointer-events-none absolute inset-0"></div>
   </div>
 </article>
+
+<style>
+  .card {
+    perspective: 1100px;
+  }
+
+  .card-tilt {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* Light source that tracks the cursor across the card. */
+  .card-glow {
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(91, 140, 255, 0.18),
+      rgba(45, 212, 191, 0.07) 42%,
+      transparent 68%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .card:hover .card-glow {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-glow {
+      display: none;
+    }
+  }
+</style>

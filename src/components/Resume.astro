@@ -2,6 +2,7 @@
 import { education, experience, achievements, certifications } from "../data/resume";
 import { profile } from "../data/profile";
 import SectionHeading from "./SectionHeading.astro";
+import Icon from "./Icon.astro";
 
 const columns = [
   { title: "Experience & Leadership", items: experience },
@@ -17,9 +18,10 @@ const columns = [
         href={profile.resume}
         target="_blank"
         rel="noopener"
-        class="mb-10 rounded-md border border-accent/40 bg-accent/10 px-5 py-2.5 font-mono text-sm text-accent transition-colors hover:bg-accent hover:text-ink md:mb-14"
+        class="mb-10 inline-flex items-center gap-2 rounded-md border border-accent/40 bg-accent/10 px-5 py-2.5 font-mono text-sm text-accent transition-colors hover:bg-accent hover:text-ink md:mb-14"
       >
-        ↓ Download PDF
+        <Icon name="download" size={15} />
+        Download PDF
       </a>
     </div>
 
@@ -63,7 +65,7 @@ const columns = [
           {
             achievements.map((a) => (
               <li class="flex gap-3 text-muted">
-                <span class="text-accent">▹</span>
+                <Icon name="chevron" size={15} class="mt-1 shrink-0 text-accent" />
                 <span>{a}</span>
               </li>
             ))
@@ -78,7 +80,7 @@ const columns = [
           {
             certifications.map((c) => (
               <li class="flex gap-3 text-muted">
-                <span class="text-accent">▹</span>
+                <Icon name="chevron" size={15} class="mt-1 shrink-0 text-accent" />
                 <span>{c}</span>
               </li>
             ))

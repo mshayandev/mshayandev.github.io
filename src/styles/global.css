@@ -26,6 +26,21 @@
     scroll-padding-top: 5rem;
   }
 
+  /* Lenis drives scrolling when it's active; native smooth must step aside. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
   body {
     background-color: var(--color-ink);
     color: var(--color-fg);
@@ -61,6 +76,86 @@
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+}
+
+/* ---- Intro curtain + first-paint choreography ---- */
+html.is-loading {
+  overflow: hidden;
+}
+html.no-loader #loader {
+  display: none;
+}
+
+/* Hero starts hidden so GSAP can reveal it — never for reduced motion, and
+   always released by the 4s safety net in case the scripts never land. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not(.motion-fallback) [data-hero-title],
+  html.js:not(.motion-fallback) [data-hero-el],
+  html.js:not(.motion-fallback) [data-hero-portrait],
+  html.js:not(.motion-fallback) [data-hero-stats] {
+    opacity: 0;
+  }
+}
+
+/* Arrow nudge on link hover */
+.link-arrow .arrow,
+.link-back .arrow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-arrow:hover .arrow {
+  transform: translateX(4px);
+}
+.link-back:hover .arrow {
+  transform: translateX(-4px);
+}
+
+/* Depth pass: soft aurora + vignette sitting over the grid, under the scene */
+.bg-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70rem 45rem at 65% 0%, rgba(91, 140, 255, 0.09), transparent 65%),
+    radial-gradient(45rem 35rem at 10% 25%, rgba(45, 212, 191, 0.06), transparent 70%),
+    radial-gradient(100% 70% at 50% 50%, transparent 40%, rgba(6, 9, 15, 0.85) 100%);
+}
+
+/* Split-text reveal primitives */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.split-char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Accent CTA with a live glow */
+.btn-glow {
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(91, 140, 255, 0.45);
+  transition: box-shadow 0.4s ease, filter 0.3s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 28px 0 rgba(91, 140, 255, 0.45);
+  filter: brightness(1.06);
+}
+
+/* Keeps hero copy readable over the WebGL backdrop */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -10% -5% 0 -5%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    58% 55% at 30% 42%,
+    rgba(10, 14, 22, 0.82),
+    transparent 70%
+  );
 }
 
 /* Eyebrow / kicker label */

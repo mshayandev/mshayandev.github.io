@@ -3,19 +3,23 @@ import { profile } from "../data/profile";
 import Socials from "./Socials.astro";
 ---
 
-<section class="relative mx-auto max-w-6xl px-5 pb-16 pt-16 md:pb-24 md:pt-24">
+<section class="hero relative mx-auto max-w-6xl px-5 pb-16 pt-16 md:pb-24 md:pt-24">
   <div class="grid items-center gap-12 md:grid-cols-[1.3fr_1fr]">
-    <div data-reveal>
-      <p class="kicker mb-5">{profile.role} · {profile.location}</p>
-      <h1 class="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+    <div class="relative">
+      <p class="kicker mb-5" data-hero-el>{profile.role} · {profile.location}</p>
+      <h1
+        class="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
+        data-hero-title
+      >
         {profile.headline}
       </h1>
-      <p class="mt-6 max-w-xl text-lg text-muted">{profile.intro}</p>
+      <p class="mt-6 max-w-xl text-lg text-muted" data-hero-el>{profile.intro}</p>
 
-      <div class="mt-9 flex flex-wrap items-center gap-4">
+      <div class="mt-9 flex flex-wrap items-center gap-4" data-hero-el>
         <a
           href="/#work"
-          class="rounded-md bg-accent px-6 py-3 font-mono text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+          class="btn-glow rounded-md bg-accent px-6 py-3 font-mono text-sm font-medium text-ink"
+          data-magnetic
         >
           View my work
         </a>
@@ -24,6 +28,7 @@ import Socials from "./Socials.astro";
           target="_blank"
           rel="noopener"
           class="rounded-md border border-border px-6 py-3 font-mono text-sm text-fg transition-colors hover:border-accent hover:text-accent"
+          data-magnetic
         >
           Download résumé
         </a>
@@ -31,29 +36,232 @@ import Socials from "./Socials.astro";
       </div>
     </div>
 
-    <div class="relative mx-auto w-full max-w-xs md:max-w-none" data-reveal>
-      <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-accent/20 to-accent-2/20 blur-xl"></div>
-      <div class="relative overflow-hidden rounded-3xl border border-border bg-surface">
+    <div
+      class="relative mx-auto w-full max-w-[268px] sm:max-w-[300px] md:max-w-[360px]"
+      data-hero-portrait
+    >
+      <div
+        class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-accent/25 to-accent-2/25 blur-xl"
+      >
+      </div>
+      <div
+        class="tilt portrait relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-surface md:aspect-[3/4]"
+        data-tilt
+      >
         <img
           src={profile.portrait}
           alt={`Portrait of ${profile.name}`}
-          width="480"
-          height="560"
-          class="h-full w-full object-cover"
+          width="683"
+          height="1024"
+          fetchpriority="high"
+          class="portrait-img h-full w-full object-cover"
         />
+        <div class="portrait-fade pointer-events-none absolute inset-x-0 bottom-0 h-2/5"></div>
+        <div class="scan pointer-events-none absolute inset-0"></div>
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
       </div>
     </div>
   </div>
 
   <!-- Real stats, not filler counters -->
-  <dl class="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-4" data-reveal>
+  <dl
+    class="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-4"
+    data-hero-stats
+  >
     {
       profile.stats.map((s) => (
         <div class="bg-surface px-6 py-6">
-          <dt class="font-display text-3xl font-bold text-fg">{s.value}</dt>
+          <dt class="font-display text-3xl font-bold text-fg" data-count>
+            {s.value}
+          </dt>
           <dd class="mt-1 text-sm text-muted">{s.label}</dd>
         </div>
       ))
     }
   </dl>
 </section>
+
+<script>
+  import { initMotion, reducedMotion, splitText, onSiteReady } from "../lib/motion";
+
+  const { gsap } = initMotion();
+  const title = document.querySelector<HTMLElement>("[data-hero-title]");
+  const els = gsap.utils.toArray<HTMLElement>("[data-hero-el]");
+  const portrait = document.querySelector<HTMLElement>("[data-hero-portrait]");
+  const stats = document.querySelector<HTMLElement>("[data-hero-stats]");
+
+  if (!reducedMotion() && title) {
+    const chars = splitText(title);
+
+    gsap.set([...els, portrait, stats].filter(Boolean), { opacity: 0, y: 24 });
+    gsap.set(title, { opacity: 1 });
+    gsap.set(chars, { yPercent: 115, opacity: 0 });
+
+    // Waits for the intro curtain when there is one; runs immediately otherwise.
+    const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+    onSiteReady(() => tl.play());
+
+    tl.to(chars, {
+      yPercent: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: { each: 0.012, from: "start" },
+      ease: "power4.out",
+    })
+      .to(els, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }, "-=0.75")
+      .to(portrait, { opacity: 1, y: 0, duration: 1 }, "-=0.85")
+      .to(stats, { opacity: 1, y: 0, duration: 0.8 }, "-=0.7");
+
+    // Counters run off the real values already in the DOM — "10+" stays "10+".
+    stats?.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+      const match = /^(\d+(?:\.\d+)?)(.*)$/.exec(el.textContent?.trim() ?? "");
+      if (!match) return;
+      const target = parseFloat(match[1]);
+      const suffix = match[2] ?? "";
+      const state = { value: 0 };
+      tl.to(
+        state,
+        {
+          value: target,
+          duration: 1.4,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = `${Math.round(state.value)}${suffix}`;
+          },
+        },
+        "-=0.6"
+      );
+    });
+
+    // Magnetic buttons.
+    gsap.utils.toArray<HTMLElement>("[data-magnetic]").forEach((el) => {
+      const strength = 0.35;
+      const move = (e: PointerEvent) => {
+        const r = el.getBoundingClientRect();
+        gsap.to(el, {
+          x: (e.clientX - (r.left + r.width / 2)) * strength,
+          y: (e.clientY - (r.top + r.height / 2)) * strength,
+          duration: 0.6,
+          ease: "power3.out",
+        });
+      };
+      const reset = () =>
+        gsap.to(el, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.4)" });
+      el.addEventListener("pointermove", move);
+      el.addEventListener("pointerleave", reset);
+    });
+
+    // Portrait tilt.
+    const tilt = document.querySelector<HTMLElement>("[data-tilt]");
+    if (tilt) {
+      const bounds = () => tilt.getBoundingClientRect();
+      tilt.addEventListener("pointermove", (e) => {
+        const r = bounds();
+        gsap.to(tilt, {
+          rotateY: ((e.clientX - (r.left + r.width / 2)) / r.width) * 14,
+          rotateX: -((e.clientY - (r.top + r.height / 2)) / r.height) * 14,
+          duration: 0.6,
+          ease: "power3.out",
+        });
+      });
+      tilt.addEventListener("pointerleave", () =>
+        gsap.to(tilt, { rotateX: 0, rotateY: 0, duration: 1, ease: "power3.out" })
+      );
+    }
+  }
+</script>
+
+<style>
+  .tilt {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* Source is a tall 2:3 portrait shown in a shorter frame. Bias the crop
+     upward so the face is kept and only the lower body is trimmed.
+     Nudge the second value if the framing needs to sit higher or lower. */
+  .portrait-img {
+    object-position: 50% 16%;
+  }
+
+  /* Softens the bottom crop into the page instead of ending on a hard cut. */
+  .portrait-fade {
+    background: linear-gradient(
+      to top,
+      rgba(10, 14, 22, 0.9) 0%,
+      rgba(10, 14, 22, 0.45) 45%,
+      transparent 100%
+    );
+  }
+
+  /* Viewfinder corner ticks */
+  .corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--color-accent-2);
+    opacity: 0.55;
+    transition: opacity 0.4s ease, width 0.4s ease, height 0.4s ease;
+  }
+  .portrait:hover .corner {
+    opacity: 0.95;
+    width: 22px;
+    height: 22px;
+  }
+  .corner-tl {
+    top: 12px;
+    left: 12px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .corner-tr {
+    top: 12px;
+    right: 12px;
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .corner-bl {
+    bottom: 12px;
+    left: 12px;
+    border-right: 0;
+    border-top: 0;
+  }
+  .corner-br {
+    bottom: 12px;
+    right: 12px;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  /* Slow signal sweep across the portrait. */
+  .scan {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(45, 212, 191, 0.14) 48%,
+      transparent 52%
+    );
+    background-size: 100% 220%;
+    animation: scan 7s linear infinite;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes scan {
+    from {
+      background-position: 0 -110%;
+    }
+    to {
+      background-position: 0 110%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scan {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>

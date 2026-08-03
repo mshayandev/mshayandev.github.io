@@ -69,7 +69,7 @@ I build the whole vertical slice: sensors and radios at the bottom, a browser at
 <tr>
 <td width="50%" valign="top">
 
-### 🛰️ SHARC — Self-Healing Anti-Jamming Radio
+### 🛰️ SHARC — Self Healing Anti-Jamming Radio
 **`Final Year Project · in progress`**
 `ESP32-S3` `LoRa SX1276/78` `Edge ML` `Imitation Learning`
 
