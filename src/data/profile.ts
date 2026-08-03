@@ -22,7 +22,7 @@ export const profile = {
   /** Real, defensible numbers — no filler counters */
   stats: [
     { value: "10+", label: "Projects shipped" },
-    { value: "3", label: "IoT competition podiums" },
+    { value: "2", label: "IoT competition podiums" },
     { value: "4+", label: "Years building" },
     { value: "5+", label: "Leadership & volunteer roles" },
   ],
