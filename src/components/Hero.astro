@@ -36,23 +36,32 @@ import Socials from "./Socials.astro";
       </div>
     </div>
 
-    <div class="relative mx-auto w-full max-w-xs md:max-w-none" data-hero-portrait>
+    <div
+      class="relative mx-auto w-full max-w-[268px] sm:max-w-[300px] md:max-w-[360px]"
+      data-hero-portrait
+    >
       <div
         class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-accent/25 to-accent-2/25 blur-xl"
       >
       </div>
       <div
-        class="tilt relative overflow-hidden rounded-3xl border border-border bg-surface"
+        class="tilt portrait relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-surface md:aspect-[3/4]"
         data-tilt
       >
         <img
           src={profile.portrait}
           alt={`Portrait of ${profile.name}`}
-          width="480"
-          height="560"
-          class="h-full w-full object-cover"
+          width="683"
+          height="1024"
+          fetchpriority="high"
+          class="portrait-img h-full w-full object-cover"
         />
+        <div class="portrait-fade pointer-events-none absolute inset-x-0 bottom-0 h-2/5"></div>
         <div class="scan pointer-events-none absolute inset-0"></div>
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
       </div>
     </div>
   </div>
@@ -169,6 +178,62 @@ import Socials from "./Socials.astro";
   .tilt {
     transform-style: preserve-3d;
     will-change: transform;
+  }
+
+  /* Source is a tall 2:3 portrait shown in a shorter frame. Bias the crop
+     upward so the face is kept and only the lower body is trimmed.
+     Nudge the second value if the framing needs to sit higher or lower. */
+  .portrait-img {
+    object-position: 50% 16%;
+  }
+
+  /* Softens the bottom crop into the page instead of ending on a hard cut. */
+  .portrait-fade {
+    background: linear-gradient(
+      to top,
+      rgba(10, 14, 22, 0.9) 0%,
+      rgba(10, 14, 22, 0.45) 45%,
+      transparent 100%
+    );
+  }
+
+  /* Viewfinder corner ticks */
+  .corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--color-accent-2);
+    opacity: 0.55;
+    transition: opacity 0.4s ease, width 0.4s ease, height 0.4s ease;
+  }
+  .portrait:hover .corner {
+    opacity: 0.95;
+    width: 22px;
+    height: 22px;
+  }
+  .corner-tl {
+    top: 12px;
+    left: 12px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .corner-tr {
+    top: 12px;
+    right: 12px;
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .corner-bl {
+    bottom: 12px;
+    left: 12px;
+    border-right: 0;
+    border-top: 0;
+  }
+  .corner-br {
+    bottom: 12px;
+    right: 12px;
+    border-left: 0;
+    border-top: 0;
   }
 
   /* Slow signal sweep across the portrait. */

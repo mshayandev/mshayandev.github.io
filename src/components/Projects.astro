@@ -49,28 +49,118 @@ const ordered = [...projects].sort(
   </div>
 </section>
 
-<script is:inline>
-  (() => {
-    const buttons = document.querySelectorAll(".filter-btn");
-    const cards = document.querySelectorAll("#project-grid [data-category]");
-    const active = {
-      on: "border-accent bg-accent/10 text-accent",
-      off: "border-border text-muted hover:text-fg",
-    };
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const f = btn.getAttribute("data-filter");
-        buttons.forEach((b) => {
-          const isThis = b === btn;
-          b.setAttribute("aria-pressed", String(isThis));
-          b.classList.remove(...active.on.split(" "), ...active.off.split(" "));
-          b.classList.add(...(isThis ? active.on : active.off).split(" "));
+<script>
+  import { initMotion, reducedMotion } from "../lib/motion";
+
+  const { gsap, Flip, ScrollTrigger } = initMotion();
+  const buttons = Array.from(document.querySelectorAll<HTMLElement>(".filter-btn"));
+  const grid = document.getElementById("project-grid");
+  const cards = grid ? Array.from(grid.querySelectorAll<HTMLElement>("[data-card]")) : [];
+  const still = reducedMotion();
+
+  const activeClasses = "border-accent bg-accent/10 text-accent".split(" ");
+  const idleClasses = "border-border text-muted hover:text-fg".split(" ");
+
+  /* ---- Filtering: cards fly to their new positions instead of vanishing ---- */
+  const applyFilter = (key: string) => {
+    const state = still ? null : Flip.getState(cards, { props: "opacity" });
+
+    cards.forEach((card) => {
+      const show = key === "*" || card.dataset.category === key;
+      card.classList.toggle("hidden", !show);
+    });
+
+    // A card revealed by the filter may never have hit its scroll reveal, so
+    // clear the entrance state here — Flip already captured the "before".
+    gsap.set(
+      cards.filter((c) => !c.classList.contains("hidden")),
+      { opacity: 1, y: 0 }
+    );
+
+    if (!state) return;
+
+    Flip.from(state, {
+      duration: 0.65,
+      ease: "power2.inOut",
+      scale: true,
+      absolute: true,
+      stagger: 0.025,
+      // Grid height changed — every other scroll trigger needs re-measuring.
+      onComplete: () => ScrollTrigger.refresh(),
+      onEnter: (els) =>
+        gsap.fromTo(
+          els,
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1, duration: 0.5, stagger: 0.025, ease: "power2.out" }
+        ),
+      onLeave: (els) =>
+        gsap.to(els, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.in" }),
+    });
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => {
+        const isThis = b === btn;
+        b.setAttribute("aria-pressed", String(isThis));
+        b.classList.remove(...activeClasses, ...idleClasses);
+        b.classList.add(...(isThis ? activeClasses : idleClasses));
+      });
+      applyFilter(btn.dataset.filter ?? "*");
+    });
+  });
+
+  if (!still && cards.length) {
+    /* ---- Entrance: batched so a full row animates together ---- */
+    gsap.set(cards, { opacity: 0, y: 34 });
+    ScrollTrigger.batch(cards, {
+      start: "top 88%",
+      once: true,
+      onEnter: (batch) =>
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power3.out",
+          overwrite: true,
+        }),
+    });
+
+    /* ---- Tilt + cursor-tracked glow, one delegated handler for the grid ---- */
+    const MAX_TILT = 7;
+    cards.forEach((card) => {
+      const tilt = card.querySelector<HTMLElement>(".card-tilt");
+      if (!tilt) return;
+
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+
+        card.style.setProperty("--mx", `${px * 100}%`);
+        card.style.setProperty("--my", `${py * 100}%`);
+
+        gsap.to(tilt, {
+          rotateY: (px - 0.5) * 2 * MAX_TILT,
+          rotateX: -(py - 0.5) * 2 * MAX_TILT,
+          z: 26,
+          duration: 0.5,
+          ease: "power3.out",
+          overwrite: "auto",
         });
-        cards.forEach((c) => {
-          const show = f === "*" || c.getAttribute("data-category") === f;
-          c.classList.toggle("hidden", !show);
+      });
+
+      card.addEventListener("pointerleave", () => {
+        gsap.to(tilt, {
+          rotateX: 0,
+          rotateY: 0,
+          z: 0,
+          duration: 0.9,
+          ease: "elastic.out(1, 0.55)",
+          overwrite: "auto",
         });
       });
     });
-  })();
+  }
 </script>

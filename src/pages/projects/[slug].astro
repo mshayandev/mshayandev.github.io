@@ -57,7 +57,7 @@ const meta = [
           <img src={project.image} alt={project.title} class="w-full object-cover" />
         ) : (
           <div class="aspect-[16/9]">
-            <ProjectPlaceholder label={project.title} sub={project.domain} />
+            <ProjectPlaceholder seed={project.slug} category={project.category} />
           </div>
         )
       }

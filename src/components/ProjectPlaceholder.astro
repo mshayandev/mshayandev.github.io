@@ -1,21 +1,81 @@
 ---
-// A branded, on-theme stand-in for projects that don't have a real image yet.
-// Far better than a grey "Loading..." box — and trivially replaced: just set
-// `image` on the project once a real screenshot exists.
+import { generateThumbnail, type ThumbCategory } from "../lib/thumbnail";
+
+/**
+ * Generative stand-in for projects with no screenshot. Rendered at build time
+ * and seeded by the slug, so each project gets its own permanent artwork.
+ * Drop a real `image` on the project and this disappears.
+ */
 interface Props {
-  label: string;
-  sub?: string;
+  seed: string;
+  category: ThumbCategory;
   class?: string;
 }
-const { label, sub, class: cls = "" } = Astro.props;
+
+const { seed, category, class: cls = "" } = Astro.props;
+const { viewBox, markup } = generateThumbnail(seed, category);
 ---
 
-<div class={`relative flex h-full w-full items-center justify-center overflow-hidden bg-surface-2 ${cls}`}>
-  <div class="bg-grid absolute inset-0 opacity-70"></div>
-  <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-3xl"></div>
-  <div class="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-accent-2/10 blur-3xl"></div>
-  <div class="relative px-6 text-center">
-    {sub && <p class="kicker mb-2">{sub}</p>}
-    <p class="font-display text-xl font-semibold text-fg/85 sm:text-2xl">{label}</p>
-  </div>
+<div class={`thumb relative h-full w-full overflow-hidden bg-surface-2 ${cls}`}>
+  <svg
+    class="h-full w-full"
+    viewBox={viewBox}
+    preserveAspectRatio="xMidYMid slice"
+    role="presentation"
+    aria-hidden="true"
+    set:html={markup}
+  />
+  <div class="thumb-sheen pointer-events-none absolute inset-0"></div>
 </div>
+
+<style>
+  .thumb-sheen {
+    background: linear-gradient(
+      104deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0.055) 50%,
+      transparent 62%
+    );
+    background-size: 260% 100%;
+    animation: thumb-sheen 7s ease-in-out infinite;
+  }
+
+  @keyframes thumb-sheen {
+    0%,
+    100% {
+      background-position: 130% 0;
+    }
+    50% {
+      background-position: -30% 0;
+    }
+  }
+
+  /* Pulses travel the hot traces / chart line while the card is hovered. */
+  .thumb :global(.thumb-flow) {
+    stroke-dasharray: 26 620;
+    stroke-dashoffset: 646;
+    opacity: 0.85;
+  }
+
+  :global(.group:hover) .thumb :global(.thumb-flow),
+  .thumb:hover :global(.thumb-flow) {
+    animation: thumb-flow 2.6s linear infinite;
+    opacity: 1;
+  }
+
+  @keyframes thumb-flow {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thumb-sheen {
+      animation: none;
+    }
+    :global(.group:hover) .thumb :global(.thumb-flow),
+    .thumb:hover :global(.thumb-flow) {
+      animation: none;
+    }
+  }
+</style>
