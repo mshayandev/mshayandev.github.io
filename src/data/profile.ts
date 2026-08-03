@@ -22,7 +22,7 @@ export const profile = {
   /** Real, defensible numbers — no filler counters */
   stats: [
     { value: "10+", label: "Projects shipped" },
-    { value: "3", label: "IoT competition podiums" },
+    { value: "2", label: "IoT competition podiums" },
     { value: "4+", label: "Years building" },
     { value: "5+", label: "Leadership & volunteer roles" },
   ],
@@ -45,7 +45,7 @@ export const focusAreas: FocusArea[] = [
   {
     title: "IoT & Embedded Systems",
     icon: "chip",
-    body: "ESP32, STM32 and Raspberry Pi builds — multi-sensor fusion, firmware, and devices that hold up outside the lab. Three of these placed at national and international IoT competitions.",
+    body: "ESP32, STM32 and Raspberry Pi builds — multi-sensor fusion, firmware, and devices that hold up outside the lab. Two of these placed at national and international IoT competitions.",
   },
   {
     title: "Full-Stack Web",

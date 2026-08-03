@@ -85,7 +85,13 @@ import Socials from "./Socials.astro";
 </section>
 
 <script>
-  import { initMotion, reducedMotion, splitText, onSiteReady } from "../lib/motion";
+  import {
+    initMotion,
+    reducedMotion,
+    finePointer,
+    splitText,
+    onSiteReady,
+  } from "../lib/motion";
 
   const { gsap } = initMotion();
   const title = document.querySelector<HTMLElement>("[data-hero-title]");
@@ -136,7 +142,8 @@ import Socials from "./Socials.astro";
       );
     });
 
-    // Magnetic buttons.
+    // Magnetic buttons — mouse only; on touch this would chase the scroll.
+    if (finePointer())
     gsap.utils.toArray<HTMLElement>("[data-magnetic]").forEach((el) => {
       const strength = 0.35;
       const move = (e: PointerEvent) => {
@@ -154,8 +161,10 @@ import Socials from "./Socials.astro";
       el.addEventListener("pointerleave", reset);
     });
 
-    // Portrait tilt.
-    const tilt = document.querySelector<HTMLElement>("[data-tilt]");
+    // Portrait tilt — mouse only, same reason.
+    const tilt = finePointer()
+      ? document.querySelector<HTMLElement>("[data-tilt]")
+      : null;
     if (tilt) {
       const bounds = () => tilt.getBoundingClientRect();
       tilt.addEventListener("pointermove", (e) => {
