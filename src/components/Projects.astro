@@ -50,7 +50,7 @@ const ordered = [...projects].sort(
 </section>
 
 <script>
-  import { initMotion, reducedMotion } from "../lib/motion";
+  import { initMotion, reducedMotion, finePointer } from "../lib/motion";
 
   const { gsap, Flip, ScrollTrigger } = initMotion();
   const buttons = Array.from(document.querySelectorAll<HTMLElement>(".filter-btn"));
@@ -127,8 +127,11 @@ const ordered = [...projects].sort(
         }),
     });
 
-    /* ---- Tilt + cursor-tracked glow, one delegated handler for the grid ---- */
+    /* ---- Tilt + cursor-tracked glow. Mouse only: on touch, pointermove
+       fires all through a scroll drag, which tilts cards mid-scroll and
+       pushes their transformed box past the viewport. ---- */
     const MAX_TILT = 7;
+    if (finePointer())
     cards.forEach((card) => {
       const tilt = card.querySelector<HTMLElement>(".card-tilt");
       if (!tilt) return;

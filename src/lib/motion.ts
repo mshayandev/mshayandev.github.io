@@ -7,6 +7,16 @@ import Lenis from "lenis";
 export const reducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/**
+ * True only for real mouse/trackpad pointers. Touch fires `pointermove` while
+ * scrolling, so hover-style effects (magnetic buttons, card tilt) must be
+ * gated on this — otherwise a scroll drag flings elements off-screen and
+ * widens the page.
+ */
+export const finePointer = () =>
+  window.matchMedia("(pointer: fine)").matches &&
+  !window.matchMedia("(hover: none)").matches;
+
 let lenis: Lenis | null = null;
 let ready = false;
 

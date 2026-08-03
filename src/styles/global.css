@@ -41,6 +41,12 @@
     overflow: hidden;
   }
 
+  /* `clip` rather than `hidden`: it stops sideways scrolling without turning
+     the element into a scroll container, so sticky nav and Lenis keep working. */
+  html {
+    overflow-x: clip;
+  }
+
   body {
     background-color: var(--color-ink);
     color: var(--color-fg);
@@ -48,6 +54,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    max-width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -148,7 +155,8 @@ html.no-loader #loader {
 .hero::before {
   content: "";
   position: absolute;
-  inset: -10% -5% 0 -5%;
+  /* Horizontal insets stay at 0 — bleeding sideways widened the page on mobile. */
+  inset: -10% 0 0 0;
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(

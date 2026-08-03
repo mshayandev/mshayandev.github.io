@@ -45,7 +45,7 @@ export const focusAreas: FocusArea[] = [
   {
     title: "IoT & Embedded Systems",
     icon: "chip",
-    body: "ESP32, STM32 and Raspberry Pi builds — multi-sensor fusion, firmware, and devices that hold up outside the lab. Three of these placed at national and international IoT competitions.",
+    body: "ESP32, STM32 and Raspberry Pi builds — multi-sensor fusion, firmware, and devices that hold up outside the lab. Two of these placed at national and international IoT competitions.",
   },
   {
     title: "Full-Stack Web",
